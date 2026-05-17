@@ -7,6 +7,7 @@ import { Component, inject } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
   ngOnInit(): void {
   //  this.getMessgae()
   }
@@ -20,5 +21,10 @@ export class HomeComponent {
   getProducts(){
 
      this.httpClient.get('/api/product/all').subscribe(data=>console.log(data));
-  }
+    }
+    
+    getProductsello() {
+    this.httpClient.get('/user').subscribe(data=>console.log(data));
+
+}
 }

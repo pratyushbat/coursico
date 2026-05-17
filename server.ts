@@ -2,7 +2,7 @@
 import { config } from "dotenv";
 config({ path: "./.env" });
 import 'zone.js/node';
-import {  v2 } from 'cloudinary';
+import { v2 } from 'cloudinary';
 import { APP_BASE_HREF } from '@angular/common';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import express from 'express';
@@ -12,6 +12,7 @@ import { AppServerModule } from './src/main.server';
 import productRoutes from "./backend/routes/productRoute";
 // import configDb from 'backend/config/connection';
 import mongoose from "mongoose";
+import productModel from "backend/models/productsModel";
 const configDb = async () => {
   try {
     const connectionString: string = process.env.DB_URI || "";
@@ -19,12 +20,12 @@ const configDb = async () => {
     console.log(connectionString)
     console.log('-------------process.env.DB_URI---------------')
     console.log(process.env.DB_URI)
-    await mongoose.connect(connectionString,{
-    dbName: 'myecomdb'
-});
+    await mongoose.connect(connectionString, {
+      dbName: 'myecomdb'
+    });
     console.log(`Database configurations success 🗳`);
   } catch (error: any) {
-    console.log("failed to Database Configurations 😞",error);
+    console.log("failed to Database Configurations 😞", error);
   }
 };
 
@@ -35,6 +36,7 @@ export function app(): express.Express {
 
   const server = express();
   configDb();
+
   const distFolder = join(process.cwd(), 'dist/coursico/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
@@ -49,23 +51,24 @@ export function app(): express.Express {
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-    server.use("/api/product", productRoutes);
+
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
   }));
 
-
+  server.use('/rest', productRoutes);
+  server.get('/user', function (req, res) {
+    return res.send( { name: 'tobi' });
+  });
+  server.use("/api/product", productRoutes);
   //cloudnary configuration for saving profile image on cloud
-v2.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_API_KEY,
-  api_secret: process.env.CLOUD_API_SECRET_KEY,
-});
+  v2.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET_KEY,
+  });
 
-/*     server.get('/api/hello', (req, res) => {
-    console.log('-------------------------')
-    res.send({ message: 'hello from server api hello' })
-  }); */
+
 
 
   // All regular routes use the Universal engine
