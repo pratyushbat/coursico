@@ -13,7 +13,7 @@
     "test": "ng test",
     "dev:ssr": "ng run coursico:serve-ssr",
     "serve:ssr": "node dist/coursico/server/main.js",
-    "build:ssr": "ng build && node dist/coursico/server/main.js",
+    "build:ssr": "ng run coursico:server && ng build && node dist/coursico/server/main.js",
     "prerender": "ng run coursico:prerender"
   },
   "private": true,
