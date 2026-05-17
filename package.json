@@ -8,7 +8,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:ssr": "npm run build:ssr && npm run serve:ssr",
-    "build": "ng build",
+    "build": "ng build && node dist/coursico/server/main.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run coursico:serve-ssr",
