@@ -1,0 +1,9 @@
+<p>home works!</p>
+<div>
+  <p>
+
+    The answer in a gist is to use pre-rendering when you have primarily static pages like the contact ,about ,landing pages etc. This generally tends to be a finite set of pages that can be clearly maintained and logged. Server-side should be used where the links are dynamic and especially when you deal with IDs. So let’s say for example you had a site which allows users to upload dog images and you show those images under different IDs in the URL like ‘/dog/:id’ . In this case it doesn’t make sense to prerender each and every ID that would be generated because it would potentially be an infinite list and maintaining a lot set of links for the purposes of pre-rendering is too expensive and cumbersome to maintain. Note that pre-rendering is faster than server side rendering because ultimately even in the case of server side rendering the HTML content still needs to be calculated on the server side. In the case of pre-rendering it is already saved to either your server or a caching service like pre-render.io. it might still make sense to pre-render blogs even though it might be considered dynamic. This is assuming that blogs do not change too often and that there will be a finite list of blog items. So making them load fast might make a lot of sense using pre-rendering. It also makes sense not to have to do either pre-rendering or server side rendering for private links since the objective of the service is to make sure that bots crawl. That said, if you are keen to put the effort, you can still do it to make your site faster.
+  </p>
+  <button (click)="getMessgae()">get data</button>
+  <button (click)="getProducts()">get products</button>
+</div>

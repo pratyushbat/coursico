@@ -1,0 +1,162 @@
+/* styles.scss */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-card {
+  display: flex;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  min-height: 550px;
+}
+
+.login-left {
+  flex: 1;
+  background: linear-gradient(135deg, #4338ca, #7e22ce);
+  color: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+}
+
+.login-right {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #111827;
+  }
+
+  form {
+    width: 100%;
+  }
+}
+
+.input-group {
+  margin-bottom: 20px;
+
+  input {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 14px;
+    font-size: 1rem;
+    transition: 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+  }
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4b5563;
+  }
+
+  a {
+    text-decoration: none;
+    color: #4f46e5;
+    font-weight: 500;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4f46e5, #7e22ce);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
+}
+
+.signup-text {
+  text-align: center;
+  margin-top: 25px;
+  color: #6b7280;
+
+  a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    padding: 40px 30px;
+  }
+
+  .login-left {
+    text-align: center;
+
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+}
