@@ -45,6 +45,11 @@ export function app(): express.Express {
     bootstrap: AppServerModule
   }));
 
+  server.use('/rest', productRoutes);
+  server.get('/user', function (req, res) {
+    return res.send( { name: 'tobi' });
+  });
+  server.use("/api/product", productRoutes);
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
@@ -56,11 +61,6 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
-  server.use('/rest', productRoutes);
-  server.get('/user', function (req, res) {
-    return res.send( { name: 'tobi' });
-  });
-  server.use("/api/product", productRoutes);
   //cloudnary configuration for saving profile image on cloud
   v2.config({
     cloud_name: process.env.CLOUD_NAME,
