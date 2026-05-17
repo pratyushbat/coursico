@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   try {
-    const serverModule = await import('../dist/coursico/server/server.mjs');
+    const serverModule = await import('../dist/coursico/server/server.js');
     
     // Angular's new builder exports the server differently
     const server = serverModule.default || serverModule.app || serverModule;
