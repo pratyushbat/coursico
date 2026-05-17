@@ -19,7 +19,7 @@ export class HomeComponent {
     return this.httpClient.get('/api/hello').subscribe(data=>console.log(data));
   }
   getProducts(){
-console.log('getting-- build:packagae cabegdsssr---- products hurray')
+console.log('getting-- build:shure slo packagae cabegdsssr---- products hurray')
      this.httpClient.get('/api/product/all').subscribe(data=>console.log(data));
     }
     
