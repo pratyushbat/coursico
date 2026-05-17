@@ -10,8 +10,26 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { AppServerModule } from './src/main.server';
 import productRoutes from "./backend/routes/productRoute";
-import configDb from 'backend/config/connection';
+// import configDb from 'backend/config/connection';
+import mongoose from "mongoose";
+const configDb = async () => {
+  try {
+    const connectionString: string = process.env.DB_URI || "";
+    console.log('-------------connectionString---------------')
+    console.log(connectionString)
+    console.log('-------------process.env.DB_URI---------------')
+    console.log(process.env.DB_URI)
+    await mongoose.connect(connectionString,{
+    dbName: 'myecomdb'
+});
+    console.log(`Database configurations success 🗳`);
+  } catch (error: any) {
+    console.log("failed to Database Configurations 😞",error);
+  }
+};
+
 // The Express app is exported so that it can be used by serverless Functions.
+
 export function app(): express.Express {
   // connecting DB
 
