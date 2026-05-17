@@ -31,11 +31,12 @@ export function app(): express.Express {
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
+    server.use("/api/product", productRoutes);
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
   }));
 
-  server.use("/api/product", productRoutes);
+
   //cloudnary configuration for saving profile image on cloud
 v2.config({
   cloud_name: process.env.CLOUD_NAME,
