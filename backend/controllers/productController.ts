@@ -14,7 +14,12 @@ const slugify = require('slugify');
 export const allProductsList: RequestHandler = async (req: Request, res: Response) => {
   try {
     const products = await productModel.find().sort('-createdAt');
-        console.log('asdas', products)
+        console.log('asdas', products);
+        res.set({
+  'Cache-Control': 'no-cache, no-store, must-revalidate',
+  Pragma: 'no-cache',
+  Expires: '0'
+});
    return  res.json(products);
 
   } catch (error: any) {
