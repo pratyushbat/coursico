@@ -19,6 +19,6 @@ export class HomeComponent {
   }
   getProducts(){
 
-    return this.httpClient.get('/api/product/all').subscribe(data=>console.log(data));
+     this.httpClient.get('/api/product/all').subscribe(data=>console.log(data));
   }
 }
