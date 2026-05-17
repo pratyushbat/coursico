@@ -19,7 +19,7 @@ export class HomeComponent {
     return this.httpClient.get('/api/hello').subscribe(data=>console.log(data));
   }
   getProducts(){
-
+console.log('getting products')
      this.httpClient.get('/api/product/all').subscribe(data=>console.log(data));
     }
     
